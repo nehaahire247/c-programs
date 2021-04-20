@@ -1,3 +1,5 @@
+program to check given number is a prime or not
+
 #include<stdio.h>
 #include<conio.h>
 int main ()
