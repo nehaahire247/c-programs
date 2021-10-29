@@ -1,0 +1,38 @@
+#include<stdio.h>
+int main(){
+    printf("programe of fcfs");
+    int n;
+    printf("\n enter the number of processes");
+    scanf("%d",&n);
+    int bt[n];   //burst time
+    int at[n];  //at=arrival time
+    int wt[n];  //wt=waiting time
+    for(int j=0;j<n;j++)
+    {
+        printf("enter the burst time for process p%d:",(j+1));
+        scanf("%d",&bt[j]);
+    }
+    //for calculating waiting time
+    wt[0]=0; // for the first proceess waiting time is 0
+    //waiting time=burst time+waiting time
+    int sumw=0;
+    int sumtat=0;
+    for(int i=1;i<n;i++)
+    {
+        wt[i]=bt[i-1]+wt[i-1];
+        sumw=sumw+wt[i];      //for caculating sum of all waiting time
+    }
+    //for calculating turn around time turn around time =burst time + waiting time
+    int tat[n];
+    for(int i=1;i<n;i++)
+
+    {
+        tat[i]=bt[i]+wt[i];    
+        sumtat=sumtat+tat[i];  //for calculating sum of all turnaround time
+    }
+    float avg_w=(float)(sumw/n);  //for calculating average of waiting time
+    float avg_tat=(float)(sumtat/n); //for calculating average of turn around time
+    printf("\n average waiting time is %f",avg_w);
+    printf("\n average turn around time is %f",avg_tat);
+
+}
